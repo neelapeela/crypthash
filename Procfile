@@ -1,1 +1,1 @@
-web: gunicorn crypthash.wsgi --log-file -
+web: gunicorn huntproject.wsgi --log-file -
