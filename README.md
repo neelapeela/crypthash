@@ -1,0 +1,2 @@
+# crypthash
+crypthash hunt
