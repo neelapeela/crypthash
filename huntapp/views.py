@@ -22,11 +22,11 @@ def home(request):
         messages['completedlist'] = completedlist
 
     if request.method == 'POST':
-        name = list(request.POST.keys())
-        print(name)
-        levelname = name[1]
         if 'answer-button' not in request.POST:
-            messages['levelsatus'] = ""
+            name = list(request.POST.keys())
+            print(name)
+            levelname = name[1]
+            messages['levelstatus'] = ""
             if levelname not in completedlist:
                 userinfo.is_playing = True
                 userinfo.save()
@@ -51,13 +51,7 @@ def home(request):
                 messages['levelstatus'] = "Level completed. Good job, there."
             else:
                 messages['levelstatus'] = "Wrong answer."
-                if levelname not in completedlist:
-                    userinfo.is_playing = True
-                    userinfo.save()
-                    currentlevel = Level.objects.get(level = levelname)
-                    userinfo.level = levelname
-                    userinfo.save()
-                    messages['currentlevel'] = currentlevel
+
 
         return render(request, 'index.html', messages)
 
