@@ -7,6 +7,8 @@ import operator
 
 userlist = Progress.objects.all()
 userlist = sorted(userlist, key= lambda x: x.points)
+userlist.reverse()
+print(userlist)
 
 messages = {
     'levelstatus': "",
@@ -24,7 +26,6 @@ def home(request):
     if request.method == 'POST':
         if 'answer-button' not in request.POST:
             name = list(request.POST.keys())
-            print(name)
             levelname = name[1]
             messages['levelstatus'] = ""
             if levelname not in completedlist:
@@ -37,6 +38,7 @@ def home(request):
 
         elif 'answer-button' in request.POST:
             currentlevel = Level.objects.get(level = userinfo.level)
+            messages['currentlevel'] = currentlevel
             answer = request.POST['answertext']
             if answer == currentlevel.answer:
                 userinfo.completedlist += userinfo.level
