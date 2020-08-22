@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'huntproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hunt',
+        'NAME': 'crypthash',
         'USER': 'postgres',
         'PASSWORD': 'dhruvgf',
         'HOST': 'localhost',
