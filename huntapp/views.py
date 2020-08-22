@@ -128,6 +128,9 @@ def dashboard(request):
 
 
 def leaderboard(request):
+    userlist = Progress.objects.all()
+    userlist = sorted(userlist, key= lambda x: x.points)
+    userlist.reverse()
     messages['lb'] = userlist
     return render(request, 'leaderboard.html', messages)
 
