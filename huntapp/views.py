@@ -8,13 +8,14 @@ import operator
 userlist = Progress.objects.all()
 userlist = sorted(userlist, key= lambda x: x.points)
 userlist.reverse()
-print(userlist)
 
 messages = {
     'levelstatus': "",
     'notification': "You are currently logged out. New here? Register.",
     'lb': userlist
 }
+
+print(messages['lb'])
 
 def home(request):
     if request.user.is_authenticated:
@@ -127,6 +128,6 @@ def dashboard(request):
 
 
 def leaderboard(request):
-    messages['lb']= Progress.objects.all
+    messages['lb'] = userlist
     return render(request, 'leaderboard.html', messages)
 
