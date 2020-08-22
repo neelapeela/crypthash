@@ -1,0 +1,10 @@
+{%extends 'index.html'%}
+{% block content %}
+{% for record in lb %}
+<div id="lb-record">
+    <div>{{forloop.counter}}</div>
+    <div>{{record.username}}</div>
+    <div>{{record.points}}</div>
+</div>
+{% endfor %}
+{% endblock content %}

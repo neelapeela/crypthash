@@ -1,0 +1,201 @@
+<html>
+{%load static%}
+<link href="{% static 'style.css'%}" rel="stylesheet">
+
+<body>
+	<title>\root</title>
+	<div id="up">
+		<p id="title">root<strong>\crypt#</strong></p>
+		<ul>
+			<li id="dashboard">dashboard</li>
+			<li id="leaderboard">leaderboard</li>
+			<li id="registerbutton">login</li>
+		</ul>
+
+	</div>
+	<div id="content">
+		{% block content %}
+
+		<div id="messages">
+			{%if user.is_authenticated%}
+			<h1>You are logged in, {{request.user.username}}. How is the hacking going?</h1>
+			<h2>{{levelstatus}}</h2>
+			<ul id="progress-info">
+				<li>
+					<strong>points\</strong>{{userinfo.points}}
+				</li>
+				<li>
+					<strong>completed\</strong>{{userinfo.completed}}
+				</li>
+			</ul>
+			{% if userinfo.is_playing == True %}
+			<div id="level">
+				<h1>{{currentlevel.level}}</h1>
+				<form action="index.html" method="POST">
+					{%csrf_token%}
+					<p>{{currentlevel.question}}</p>
+					<input name="answertext" type="text" placeholder="Answer">
+					<button name="answer-button" type="submit">Enter</button>
+				</form>
+			</div>
+			{% else %}
+			<div id="instruction">Pick the character you wish to remove. Remove all characters until <strong>only hashes
+					remain</strong></div>
+			<form id="game" action="" method="post">
+				{%csrf_token%}
+				<h2>#</h2>
+				{%if "a" in completedlist%}
+				{%else%}
+					<button id="a" type="submit" name="a">a</button>
+				{%endif%}
+
+				<h2>#</h2>
+				{%if "x" in completedlist%}
+				{%else%}
+					<button type="submit" name="x">x</button>
+				{%endif%}
+
+				{%if "2" in completedlist%}
+				{%else%}
+				<button type="submit" name="2">2</button>
+				{%endif%}
+				
+				{%if "y" in completedlist%}
+				{%else%}
+					<button type="submit" name="y">y</button>
+				{%endif%}
+				<h2>#</h2>
+				{%if "z" in completedlist%}
+				{%else%}
+					<button type="submit" name="z">z</button>
+				{%endif%}
+			
+				{%if "h" in completedlist%}
+				{%else%}
+					<button type="submit" name="h">h</button>
+				{%endif%}
+				
+				<h2>#</h2>
+				{%if "1" in completedlist%}
+				{%else%}
+					<button type="submit" name="1">1</button>
+				{%endif%}
+				
+				{%if "3" in completedlist%}
+				{%else%}
+					<button type="submit" name="3">3</button>
+				{%endif%}
+				
+				{%if "9" in completedlist%}
+				{%else%}
+					<button type="submit" name="9">9</button>
+				{%endif%}
+				
+				{%if "g" in completedlist%}
+				{%else%}
+					<button type="submit" name="g">g</button>
+				{%endif%}
+				
+				<h2>#</h2>
+				{%if "d" in completedlist%}
+				{%else%}
+					<button type="submit" name="d">d</button>
+				{%endif%}
+				
+				{%if "e" in completedlist%}
+				{%else%}
+					<button type="submit" name="e">e</button>
+				{%endif%}
+				
+				{%if "7" in completedlist%}
+				{%else%}
+					<button type="submit" name="7">7</button>
+				{%endif%}
+				
+				{%if "5" in completedlist%}
+				{%else%}
+					<button type="submit" name="5">5</button>
+				{%endif%}
+				<h2>#</h2>
+				
+				{%if "4" in completedlist%}
+				{%else%}
+					<button type="submit" name="4">4</button>
+				{%endif%}
+				
+				{%if "1" in completedlist%}
+				{%else%}
+					<button type="submit" name="l">l</button>
+				{%endif%}
+				<h2>#</h2>
+				
+				{%if "6" in completedlist%}
+				{%else%}
+					<button type="submit" name="6">6</button>
+				{%endif%}
+				<h2>#</h2>
+				
+				{%if "n" in completedlist%}
+				{%else%}
+					<button type="submit" name="n">n</button>
+				{%endif%}
+				
+				{%if "8" in completedlist%}
+				{%else%}
+					<button type="submit" name="8">8</button>
+				{%endif%}
+				
+				{%if "t" in completedlist%}
+				{%else%}
+					<button type="submit" name="t">t</button>
+				{%endif%}
+				
+				{%if "c" in completedlist%}
+				{%else%}
+					<button type="submit" name="c">c</button>
+				{%endif%}
+				<h2>#</h2>
+				
+				{%if "b" in completedlist%}
+				{%else%}
+					<button type="submit" name="b">b</button>
+				{%endif%}
+				<h2>#</h2>
+			</form>
+			{%endif%}
+			{%else%}
+			<h1>You are not logged in. New here? Register.</h1>
+			{%endif%}
+		</div>
+
+		{% endblock content %}
+	</div>
+
+	<footer>
+		<p>\rootclub</p>
+		<br>
+		<p><strong>Pocket 8, Sector C, Vasant Kunj, New Delhi, Delhi 110070<strong></p>
+		<img src="{% static 'ryan.png' %}">
+	</footer>
+</body>
+
+<script type="text/javascript">
+	const body = document.querySelector('body');
+	const event = document.querySelector("#dashboard");
+	const team = document.querySelector("#leaderboard");
+
+
+
+	const register = document.querySelector("#registerbutton");
+	event.addEventListener("click", (eventclick) => {
+		window.open("/", "_self");
+	})
+	team.addEventListener("click", (eventclick) => {
+		window.open("leaderboard.html", "_self");
+	})
+	register.addEventListener("click", (eventclick) => {
+		window.open("register.html", "_self")
+	})
+</script>
+
+</html>
