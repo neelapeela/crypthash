@@ -11,7 +11,7 @@
         <input type="text" size="100px" name="name" placeholder="Name">
         <input type="text" name="username" placeholder="Username">
         <input type="email" name="email" placeholder="Email">
-        <input type="text" name="password" placeholder="Password">
+        <input type="password" name="password" placeholder="Password">
         <button type="submit" name="registration">Submit</button>
     </form></div>
     
@@ -28,7 +28,7 @@
     <form action="register.html" method="post">
         {% csrf_token %}  
         <input type="text" name="username" placeholder="Username">
-        <input type="text" name="password" placeholder="Password">
+        <input type="password" name="password" placeholder="Password">
         <button name="login" type="submit">Submit</button>
     </form>
     {%endif%}

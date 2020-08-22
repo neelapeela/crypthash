@@ -587,7 +587,7 @@ form button{
 		margin: 20px;
 		border: none;
 		box-shadow: 10px 10px 80px #000;
-		background-color: #cf9eac;
+		background-color: #fdfdfd;
 		color: #000;
 		width: 200px;
 		height: 70px;
@@ -602,7 +602,7 @@ h1{
 	align-items: center;
 	font-size: 30px;
 	display: inline-flex;
-	background-color: #cbccff;
+	background-color: #b1b1b1;
 	color: red;
 	box-shadow: 10px 10px 80px #000;
 	min-width: auto;

@@ -40,9 +40,11 @@ def home(request):
                 messages['currentlevel'] = currentlevel
 
         if 'answer-button' in request.POST:
-            currentlevel = Level.objects.get(level = userinfo.level)
-            messages['currentlevel'] = currentlevel
-            answer = request.POST['answertext']
+            if userinfo.is_playing == True:
+                currentlevel = Level.objects.get(level = userinfo.level)
+                messages['currentlevel'] = currentlevel
+                answer = request.POST['answertext']
+                
             if answer == currentlevel.answer:
                 userinfo.completedlist += userinfo.level
                 completedlist = list(userinfo.completedlist)
