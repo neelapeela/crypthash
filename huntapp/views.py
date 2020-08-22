@@ -23,6 +23,8 @@ def home(request):
         messages['userinfo'] = userinfo
         completedlist = list(userinfo.completedlist)
         messages['completedlist'] = completedlist
+        currentlevel = Level.objects.get(level = userinfo.level)
+        messages['currentlevel'] = currentlevel
 
     if request.method == 'POST':
         if 'answer-button' not in request.POST:
@@ -124,6 +126,8 @@ def register(request):
 def dashboard(request):
     userinfo = Progress.objects.get(username= request.user.username)
     messages['userinfo'] = userinfo
+    currentlevel = Level.objects.get(level = userinfo.level)
+    messages['currentlevel'] = currentlevel
     return render(request, 'index.html', messages)
 
 
