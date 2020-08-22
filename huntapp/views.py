@@ -23,23 +23,23 @@ def home(request):
         messages['userinfo'] = userinfo
         completedlist = list(userinfo.completedlist)
         messages['completedlist'] = completedlist
-        currentlevel = Level.objects.get(level = userinfo.level)
-        messages['currentlevel'] = currentlevel
+        if userinfo.is_playing == True:
+            currentlevel = Level.objects.get(level = userinfo.level)
+            messages['currentlevel'] = currentlevel
 
     if request.method == 'POST':
-        if 'answer-button' not in request.POST:
-            name = list(request.POST.keys())
-            levelname = name[1]
+        if 'level' in request.POST:
+            button = request.POST.get('level')
             messages['levelstatus'] = ""
-            if levelname not in completedlist:
+            if button not in completedlist:
                 userinfo.is_playing = True
                 userinfo.save()
-                currentlevel = Level.objects.get(level = levelname)
-                userinfo.level = levelname
+                currentlevel = Level.objects.get(level = button)
+                userinfo.level = button
                 userinfo.save()
                 messages['currentlevel'] = currentlevel
 
-        elif 'answer-button' in request.POST:
+        if 'answer-button' in request.POST:
             currentlevel = Level.objects.get(level = userinfo.level)
             messages['currentlevel'] = currentlevel
             answer = request.POST['answertext']
@@ -56,7 +56,6 @@ def home(request):
                 messages['levelstatus'] = "Level completed. Good job, there."
             else:
                 messages['levelstatus'] = "Wrong answer."
-
 
         return render(request, 'index.html', messages)
 
@@ -106,7 +105,7 @@ def register(request):
                     request.user.username
                 request.session.set_expiry(1209600)
                 return redirect("/")
-            else:
+            elif not User.objects.filter(username = username).exists():
                 messages['notification'] = "Invalid credentials."
 
         if 'logout' in request.POST:
@@ -126,8 +125,9 @@ def register(request):
 def dashboard(request):
     userinfo = Progress.objects.get(username= request.user.username)
     messages['userinfo'] = userinfo
-    currentlevel = Level.objects.get(level = userinfo.level)
-    messages['currentlevel'] = currentlevel
+    if userinfo.is_playing == True:
+        currentlevel = Level.objects.get(level = userinfo.level)
+        messages['currentlevel'] = currentlevel
     return render(request, 'index.html', messages)
 
 
