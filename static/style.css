@@ -544,33 +544,29 @@ footer img{
 
 #form{
     display: inline-flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
     margin: 10px;
     justify-content: center;
     background-color: b;
 }
-#form #heading{
-    display: flex;
-	justify-content: space-evenly;
-	min-height: 100%;
-}
+
 form{
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+	display: inline-flex;
+	flex-direction: column;
+}
+
+form strong{
+	color: #09ff00;
 }
 
 form input{
-    margin: 20px;
     border: none;
 	background-color: rgb(1, 0, 49);
 	color: #d9daff;
-    height: 70px;
+    height: 30px;
     width: 300px;
 	font-size: 30;
-	box-shadow: 10px 10px 80px #000;
 }
 #form-items button{
     margin: 20px;

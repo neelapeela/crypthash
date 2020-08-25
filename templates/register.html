@@ -5,31 +5,35 @@
     <h1>{{notification}}</h1>
 </div>
 <div id="form">
-    <div id="heading"><h1>/register</h1></div>
+    Microsoft Windows [Version 10.0.18362.1016]<br>
+(c) 2019 Microsoft Corporation. All rights reserved.<br><br>
+     
     <div id="form-items"><form action="register.html" method="post">
         {% csrf_token %}  
-        <input type="text" size="100px" name="name" placeholder="Name">
-        <input type="text" name="username" placeholder="Username">
-        <input type="email" name="email" placeholder="Email">
-        <input type="text" name="password" placeholder="Password">
-        <button type="submit" name="registration">Submit</button>
+        <div style="color: rgb(231, 247, 0)">register</div>
+        <div>root:\Users\Unknown\<strong>name</strong>>: <input type="text" size="100px" name="name" placeholder="Name"></div>
+        <div>root:\Users\Unknown\<strong>username</strong>>: <input type="text" name="username" placeholder="Username"></div>
+        <div>root:\Users\Unknown\<strong>email</strong>>: <input type="email" name="email" placeholder="Email"></div>
+        <div>root:\Users\Unknown\<strong>password</strong>>: <input type="text" name="password" placeholder="Password"></div>
+        <div><button type="submit" name="registration">Submit</button></div>
     </form></div>
     
 </div>
 <div id="form">
     {% if user.is_authenticated %}
-    <div id="heading"><h1>{{request.user.username}}</h1></div>
     <form action="register.html" method="post">
-        {% csrf_token %}  
+        {% csrf_token %}
+        Hello there, <strong>{{request.user.username}}</strong>!  
         <button name="logout" type="submit">Logout</button>
     </form>
     {%else%}
-    <div id="heading"><h1>/login</h1></div>
     <form action="register.html" method="post">
         {% csrf_token %}  
-        <input type="text" name="username" placeholder="Username">
-        <input type="text" name="password" placeholder="Password">
-        <button name="login" type="submit">Submit</button>
+        <div style="color: rgb(231, 247, 0)">login</div>
+        <div>root:\Users\Unknown\<strong>username</strong>>: <input type="text" name="username" placeholder="Username"></div>
+        <div>root:\Users\Unknown\<strong>password</strong>>: <input type="text" name="password" placeholder="Password"></div>
+        <div><button type="submit" name="login">Submit</button></div>
+    
     </form>
     {%endif%}
 </div>
