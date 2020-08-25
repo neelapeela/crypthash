@@ -1,5 +1,10 @@
 {%extends 'index.html'%}
 {% block content %}
+Microsoft Windows [Version 10.0.18362.1016]<br>
+(c) 2019 Microsoft Corporation. All rights reserved.<br><br>
+
+<div id="intro">root:\Users\{%if user.is_authenticated%}{{request.user.username}}{%else%}Unknown{%endif%}> root&nbsp<div style="color: blueviolet;"> show </div>&nbsplb</div>
+
 {% for record in lb %}
 <div id="lb-record">
     <div>{{forloop.counter}}</div>
