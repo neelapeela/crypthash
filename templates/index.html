@@ -15,7 +15,6 @@
 	</div>
 	<div id="content">
 		{% block content %}
-
 		<div id="messages">
 			{%if user.is_authenticated%}
 			<h1>You are logged in, {{request.user.username}}. How is the hacking going?</h1>
@@ -31,7 +30,7 @@
 			{% if userinfo.is_playing == True %}
 			<div id="level">
 				<h1>{{currentlevel.level}}</h1>
-				<form action="index.html" method="POST">
+				<form name="levelform" action="index.html" method="POST">
 					{%csrf_token%}
 					<p>{{currentlevel.question}}</p>
 					<input name="answertext" type="text" placeholder="Answer">
@@ -46,119 +45,119 @@
 				<h2>#</h2>
 				{%if "a" in completedlist%}
 				{%else%}
-					<button id="a" type="submit" value="a" name="level">a</button>
+				<button id="a" type="submit" value="a" name="level">a</button>
 				{%endif%}
 
 				<h2>#</h2>
 				{%if "x" in completedlist%}
 				{%else%}
-					<button type="submit" value="x" name="level">x</button>
+				<button type="submit" value="x" name="level">x</button>
 				{%endif%}
 
 				{%if "2" in completedlist%}
 				{%else%}
 				<button type="submit" value="2" name="level">2</button>
 				{%endif%}
-				
+
 				{%if "y" in completedlist%}
 				{%else%}
-					<button type="submit" value="y" name="level">y</button>
+				<button type="submit" value="y" name="level">y</button>
 				{%endif%}
 				<h2>#</h2>
 				{%if "z" in completedlist%}
 				{%else%}
-					<button type="submit" value="z" name="level">z</button>
+				<button type="submit" value="z" name="level">z</button>
 				{%endif%}
-			
+
 				{%if "h" in completedlist%}
 				{%else%}
-					<button type="submit" value="h" name="level">h</button>
+				<button type="submit" value="h" name="level">h</button>
 				{%endif%}
-				
+
 				<h2>#</h2>
 				{%if "1" in completedlist%}
 				{%else%}
-					<button type="submit" value="1" name="level">1</button>
+				<button type="submit" value="1" name="level">1</button>
 				{%endif%}
-				
+
 				{%if "3" in completedlist%}
 				{%else%}
-					<button type="submit" value="3" name="level">3</button>
+				<button type="submit" value="3" name="level">3</button>
 				{%endif%}
-				
+
 				{%if "9" in completedlist%}
 				{%else%}
-					<button type="submit" value="9" name="level">9</button>
+				<button type="submit" value="9" name="level">9</button>
 				{%endif%}
-				
+
 				{%if "g" in completedlist%}
 				{%else%}
-					<button type="submit" value="g" name="level">g</button>
+				<button type="submit" value="g" name="level">g</button>
 				{%endif%}
-				
+
 				<h2>#</h2>
 				{%if "d" in completedlist%}
 				{%else%}
-					<button type="submit" value="d" name="level">d</button>
+				<button type="submit" value="d" name="level">d</button>
 				{%endif%}
-				
+
 				{%if "e" in completedlist%}
 				{%else%}
-					<button type="submit" value="e" name="level">e</button>
+				<button type="submit" value="e" name="level">e</button>
 				{%endif%}
-				
+
 				{%if "7" in completedlist%}
 				{%else%}
-					<button type="submit" value="7" name="level">7</button>
+				<button type="submit" value="7" name="level">7</button>
 				{%endif%}
-				
+
 				{%if "5" in completedlist%}
 				{%else%}
-					<button type="submit" value="5" name="level">5</button>
+				<button type="submit" value="5" name="level">5</button>
 				{%endif%}
 				<h2>#</h2>
-				
+
 				{%if "4" in completedlist%}
 				{%else%}
-					<button type="submit" value="4" name="level">4</button>
+				<button type="submit" value="4" name="level">4</button>
 				{%endif%}
-				
+
 				{%if "1" in completedlist%}
 				{%else%}
-					<button type="submit" value="1" name="level">l</button>
+				<button type="submit" value="1" name="level">l</button>
 				{%endif%}
 				<h2>#</h2>
-				
+
 				{%if "6" in completedlist%}
 				{%else%}
-					<button type="submit" value="6" name="level">6</button>
+				<button type="submit" value="6" name="level">6</button>
 				{%endif%}
 				<h2>#</h2>
-				
+
 				{%if "n" in completedlist%}
 				{%else%}
-					<button type="submit" value="n" name="level">n</button>
+				<button type="submit" value="n" name="level">n</button>
 				{%endif%}
-				
+
 				{%if "8" in completedlist%}
 				{%else%}
-					<button type="submit" value="8" name="level">8</button>
+				<button type="submit" value="8" name="level">8</button>
 				{%endif%}
-				
+
 				{%if "t" in completedlist%}
 				{%else%}
-					<button type="submit" value="t" name="level">t</button>
+				<button type="submit" value="t" name="level">t</button>
 				{%endif%}
-				
+
 				{%if "c" in completedlist%}
 				{%else%}
-					<button type="submit" value="c" name="level">c</button>
+				<button type="submit" value="c" name="level">c</button>
 				{%endif%}
 				<h2>#</h2>
-				
+
 				{%if "b" in completedlist%}
 				{%else%}
-					<button type="submit" value="b" name="level">b</button>
+				<button type="submit" value="b" name="level">b</button>
 				{%endif%}
 				<h2>#</h2>
 			</form>
@@ -172,7 +171,7 @@
 			<a href="">what's approaching?</a>
 		</div>
 	</div>
-		{% endblock content %}
+	{% endblock content %}
 	</div>
 
 	<footer>
@@ -181,7 +180,7 @@
 		<p>Pure code. Has no 'powered by Unity' banner.</p>
 		<br>
 		<p><strong>Pocket 8, Sector C, Vasant Kunj, New Delhi, Delhi 110070<strong></p>
-			<br>
+		<br>
 		<img src="{% static 'ryan.png' %}">
 	</footer>
 </body>
@@ -204,34 +203,34 @@
 		window.open("register.html", "_self")
 	})
 
-// Set the date we're counting down to
-var countDownDate = new Date("September 28, 2020 00:00:00").getTime();
+	// Set the date we're counting down to
+	var countDownDate = new Date("September 28, 2020 00:00:00").getTime();
 
-// Update the count down every 1 second
-var x = setInterval(function() {
+	// Update the count down every 1 second
+	var x = setInterval(function () {
 
-  // Get today's date and time
-  var now = new Date().getTime();
+		// Get today's date and time
+		var now = new Date().getTime();
 
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
+		// Find the distance between now and the count down date
+		var distance = countDownDate - now;
 
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		// Time calculations for days, hours, minutes and seconds
+		var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // Display the result in the element with id="demo"
-  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
+		// Display the result in the element with id="demo"
+		document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+			+ minutes + "m " + seconds + "s ";
 
-  // If the count down is finished, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
-  }
-}, 1000);
+		// If the count down is finished, write some text
+		if (distance < 0) {
+			clearInterval(x);
+			document.getElementById("demo").innerHTML = "EXPIRED";
+		}
+	}, 1000);
 
 </script>
 

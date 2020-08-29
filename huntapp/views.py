@@ -123,15 +123,6 @@ def register(request):
         return render(request, 'register.html', messages)
 
 
-def dashboard(request):
-    userinfo = Progress.objects.get(username= request.user.username)
-    messages['userinfo'] = userinfo
-    if userinfo.is_playing == True:
-        currentlevel = Level.objects.get(level = userinfo.level)
-        messages['currentlevel'] = currentlevel
-    return render(request, 'index.html', messages)
-
-
 def leaderboard(request):
     userlist = Progress.objects.all()
     userlist = sorted(userlist, key= lambda x: x.points)
