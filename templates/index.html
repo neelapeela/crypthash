@@ -32,7 +32,7 @@
 				<h1>{{currentlevel.level}}</h1>
 				<form name="levelform" action="index.html" method="POST">
 					{%csrf_token%}
-					<p>{{currentlevel.question}}</p>
+					<p>{{currentlevel.question|linebreaks}}</p>
 					<input name="answertext" type="text" placeholder="Answer">
 					<button name="answer-button" type="submit">Enter</button>
 				</form>
