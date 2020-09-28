@@ -25,7 +25,7 @@ SECRET_KEY = '337l8c*^u)+(l8^hzjf4w8y+ol70_c_*kf0k1mqy%6k77t@x%o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['www.crypthash.co']
+ALLOWED_HOSTS = ['*.crypthash.co']
 
 
 # Application definition
