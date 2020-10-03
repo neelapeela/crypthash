@@ -3,6 +3,7 @@ from django.contrib.auth.models import User, auth
 from .models import Progress, Level
 import operator
 import requests
+
 # Create your views here.
 
 userlist = Progress.objects.all()
