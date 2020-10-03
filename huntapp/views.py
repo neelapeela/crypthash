@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from .models import Progress, Level
 import operator
-
+import requests
 # Create your views here.
 
 userlist = Progress.objects.all()
@@ -73,15 +73,18 @@ def register(request):
             email = request.POST['email']
             password = request.POST['password']
 
-            if User.objects.filter(username=username).exists():
-                messages['notification'] = "Username exists. Get creative!"
-                return render(request, "register.html", messages)
-            elif User.objects.filter(email=email).exists():
-                messages['notification'] = "Account with the same email already exists"
-                return render(request, "register.html", messages)
-            else:
+            recaptcha_response = request.POST.get('g-recaptcha-response')
+            data = {
+                'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+                'response': recaptcha_response
+            }
+            r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+            result = r.json()
+            ''' End reCAPTCHA validation '''
+
+            if result['success']:
                 user = User.objects.create_user(
-                    username=username, first_name=name, email=email, password=password)
+                username=username, first_name=name, email=email, password=password)
                 user.save()
 
                 messages['notification'] = "You have been registered. Log in."
@@ -91,6 +94,9 @@ def register(request):
                 user_progress.save()
 
                 messages['userprogress'] = user_progress
+            else:
+                messages.error(request, 'Invalid reCAPTCHA. Please try again.')
+               
 
             return render(request, 'register.html', messages)
 
